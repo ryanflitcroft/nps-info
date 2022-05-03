@@ -1,5 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import ParksList from '../ParksList/ParksList';
+import ParkCard from '../ParkCard/ParkCard';
 
 export default function Main() {
   return (
@@ -7,10 +9,10 @@ export default function Main() {
       <main>
         <Switch>
           <Route exact path="/">
-            {/* list view */}
+            <ParksList />
           </Route>
-          <Route exact path="/:parkCode">
-            {/* detail view */}
+          <Route exact path="/:stateCode">
+            <ParkCard />
           </Route>
         </Switch>
       </main>
