@@ -241,7 +241,9 @@ export default function StateSelect({ stateCode, setStateCode }) {
         onChange={(e) => setStateCode(e.target.value)}
       >
         {stateCodes.map((i) => (
-          <option value={i.code}>{i.name}</option>
+          <option key={`${i.code} ${i}`} value={i.code}>
+            {i.name}
+          </option>
         ))}
       </select>
     </>

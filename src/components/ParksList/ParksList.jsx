@@ -1,22 +1,15 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route, useRouteMatch, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Loading from '../Loading/Loading';
-import ParkName from '../ParkName/ParkName';
 import getParks from '../../services/NpsService';
+import ParkDetail from '../ParkDetail/ParkDetail';
 
 export default function ParksList({ stateCode }) {
   const [parks, setParks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const getData = async () => {
-      const data = await getParks(stateCode);
-      setParks(data);
-      setIsLoading(false);
-    };
-    getData();
-  }, []);
+  const { url, path } = useRouteMatch();
+  console.log('url: ', url, 'path: ', path);
 
   useEffect(() => {
     const getData = async () => {
@@ -30,23 +23,23 @@ export default function ParksList({ stateCode }) {
 
   return (
     <>
-      <section>
+      <aside>
         {isLoading ? (
           <Loading />
         ) : (
           <ul>
             {parks.map((park, i) => (
-              <ParkName key={`${park.id} + ${i}`} park={park} />
+              <li key={`${park.id} + ${i}`}>
+                <Link to={`${url}${park.parkCode}`}>{park.parkName}</Link>
+                {console.log(`${path}:parkCode`)}
+              </li>
             ))}
           </ul>
         )}
-
-        {/* <Switch>
-          <Route exact path="/:parkCode">
-            <ParkDetail />
-          </Route>
-        </Switch> */}
-      </section>
+      </aside>
+      <Route exact path={`${path}:parkCode`}>
+        <ParkDetail />
+      </Route>
     </>
   );
 }

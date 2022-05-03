@@ -1,5 +1,12 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function ParkDetail() {
-  return <div>ParkDetail</div>;
+  const { parkCode } = useParams();
+
+  return (
+    <>
+      <div>{parkCode}</div>
+    </>
+  );
 }

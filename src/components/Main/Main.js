@@ -11,7 +11,7 @@ export default function Main() {
       <main>
         <StateSelect stateCode={stateCode} setStateCode={setStateCode} />
         <Switch>
-          <Route exact path="/">
+          <Route path="/">
             <ParksList stateCode={stateCode} />
           </Route>
         </Switch>
