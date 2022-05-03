@@ -10,7 +10,8 @@ export default async function getParks(stateCode) {
     }
   );
 
-  const { data } = res.json();
+  const { data } = await res.json();
+  const parksData = handleParksData(data);
 
-  return handleParksData(data);
+  return parksData;
 }

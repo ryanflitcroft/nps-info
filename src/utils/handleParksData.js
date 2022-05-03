@@ -1,5 +1,5 @@
 export default function handleParksData(data) {
-  data.map((i) => ({
+  return data.map((i) => ({
     id: i.id,
     npsUrl: i.url,
     parkName: i.fullName,
