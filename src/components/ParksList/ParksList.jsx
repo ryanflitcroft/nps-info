@@ -1,7 +1,8 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Loading from '../Loading/Loading';
-import ParkCard from '../ParkCard/ParkCard';
+import ParkName from '../ParkName/ParkName';
 import getParks from '../../services/NpsService';
 
 export default function ParksList({ stateCode }) {
@@ -33,10 +34,18 @@ export default function ParksList({ stateCode }) {
         {isLoading ? (
           <Loading />
         ) : (
-          parks.map((park, i) => (
-            <ParkCard key={`${park.id} + ${i}`} park={park} />
-          ))
+          <ul>
+            {parks.map((park, i) => (
+              <ParkName key={`${park.id} + ${i}`} park={park} />
+            ))}
+          </ul>
         )}
+
+        {/* <Switch>
+          <Route exact path="/:parkCode">
+            <ParkDetail />
+          </Route>
+        </Switch> */}
       </section>
     </>
   );
