@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import ParksList from '../ParksList/ParksList';
 import StateSelect from '../StateSelect/StateSelect';
 import './Main.css';
 
