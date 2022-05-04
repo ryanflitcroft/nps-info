@@ -1,23 +1,21 @@
 import React from 'react';
-import { Route, useRouteMatch, Link } from 'react-router-dom';
+import { Route, Link, useRouteMatch, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Loading from '../Loading/Loading';
 import getParks from '../../services/NpsService';
 import ParkDetail from '../ParkDetail/ParkDetail';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import './ParksList.css';
 
-export default function ParksList({ stateCode }) {
+export default function ParksList({ setParkState }) {
   const [parks, setParks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { url, path } = useRouteMatch();
-  console.log('url: ', url, 'path: ', path);
-  const history = useHistory();
+  const { stateCode } = useParams();
 
   useEffect(() => {
     const getData = async () => {
-      history.push('/');
       setIsLoading(true);
+      setParkState(stateCode);
       const data = await getParks('stateCode', stateCode);
       setParks(data);
       setIsLoading(false);
@@ -34,14 +32,13 @@ export default function ParksList({ stateCode }) {
           <ul>
             {parks.map((park, i) => (
               <li key={`${park.id} + ${i}`}>
-                <Link to={`${url}${park.parkCode}`}>{park.parkName}</Link>
-                {console.log(`${path}:parkCode`)}
+                <Link to={`${url}/${park.parkCode}`}>{park.parkName}</Link>
               </li>
             ))}
           </ul>
         )}
       </section>
-      <Route exact path={`${path}:parkCode`}>
+      <Route exact path={`${path}/:parkCode`}>
         <ParkDetail isLoading={isLoading} setIsLoading={setIsLoading} />
       </Route>
     </>

@@ -25,8 +25,8 @@ export default function ParkDetail({ isLoading, setIsLoading }) {
         </h2>
         <p>{park.description}</p>
         <section>
-          {park.images?.map((image) => (
-            <figure>
+          {park.images?.map((image, i) => (
+            <figure key={i}>
               <h3>{image.title}</h3>
               <img src={image.url} alt={image.altText} />
               <figcaption>

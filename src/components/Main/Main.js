@@ -5,15 +5,14 @@ import StateSelect from '../StateSelect/StateSelect';
 import './Main.css';
 
 export default function Main() {
-  const [stateCode, setStateCode] = useState('OR');
+  const [parkState, setParkState] = useState('');
 
   return (
     <>
       <main>
-        <StateSelect stateCode={stateCode} setStateCode={setStateCode} />
         <Switch>
           <Route path="/">
-            <ParksList stateCode={stateCode} />
+            <StateSelect parkState={parkState} setParkState={setParkState} />
           </Route>
         </Switch>
       </main>
