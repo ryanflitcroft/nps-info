@@ -5,6 +5,7 @@ import Loading from '../Loading/Loading';
 import getParks from '../../services/NpsService';
 import ParkDetail from '../ParkDetail/ParkDetail';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import './ParksList.css';
 
 export default function ParksList({ stateCode }) {
   const [parks, setParks] = useState([]);
@@ -26,7 +27,7 @@ export default function ParksList({ stateCode }) {
 
   return (
     <>
-      <aside>
+      <section>
         {isLoading ? (
           <Loading />
         ) : (
@@ -39,7 +40,7 @@ export default function ParksList({ stateCode }) {
             ))}
           </ul>
         )}
-      </aside>
+      </section>
       <Route exact path={`${path}:parkCode`}>
         <ParkDetail isLoading={isLoading} setIsLoading={setIsLoading} />
       </Route>
