@@ -4,15 +4,18 @@ import { useState, useEffect } from 'react';
 import Loading from '../Loading/Loading';
 import getParks from '../../services/NpsService';
 import ParkDetail from '../ParkDetail/ParkDetail';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ParksList({ stateCode }) {
   const [parks, setParks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { url, path } = useRouteMatch();
   console.log('url: ', url, 'path: ', path);
+  const history = useHistory();
 
   useEffect(() => {
     const getData = async () => {
+      history.push('/');
       setIsLoading(true);
       const data = await getParks('stateCode', stateCode);
       setParks(data);
