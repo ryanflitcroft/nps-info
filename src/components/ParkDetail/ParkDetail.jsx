@@ -19,22 +19,23 @@ export default function ParkDetail({ isLoading, setIsLoading }) {
 
   return (
     <>
-      <section>
+      <article>
         <h2>
           {park.parkName} - {park.parkCode}
         </h2>
         <p>{park.description}</p>
-
-        {park.images?.map((image) => (
-          <figure>
-            <h3>{image.title}</h3>
-            <img src={image.url} alt={image.altText} />
-            <figcaption>
-              {image.caption} - {image.credit}
-            </figcaption>
-          </figure>
-        ))}
-      </section>
+        <section>
+          {park.images?.map((image) => (
+            <figure>
+              <h3>{image.title}</h3>
+              <img src={image.url} alt={image.altText} />
+              <figcaption>
+                {image.caption} - {image.credit}
+              </figcaption>
+            </figure>
+          ))}
+        </section>
+      </article>
     </>
   );
 }
