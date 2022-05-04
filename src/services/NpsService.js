@@ -1,8 +1,8 @@
 import handleParksData from '../utils/handleParksData';
 
-export default async function getParks(stateCode) {
+export default async function getParks(param, query) {
   const res = await fetch(
-    `https://developer.nps.gov/api/v1/parks/?stateCode=${stateCode}`,
+    `https://developer.nps.gov/api/v1/parks/?${param}=${query}`,
     {
       headers: {
         'X-Api-Key': `${process.env.NPS_KEY}`,

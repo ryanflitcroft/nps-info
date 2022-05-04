@@ -14,7 +14,7 @@ export default function ParksList({ stateCode }) {
   useEffect(() => {
     const getData = async () => {
       setIsLoading(true);
-      const data = await getParks(stateCode);
+      const data = await getParks('stateCode', stateCode);
       setParks(data);
       setIsLoading(false);
     };
@@ -38,7 +38,7 @@ export default function ParksList({ stateCode }) {
         )}
       </aside>
       <Route exact path={`${path}:parkCode`}>
-        <ParkDetail />
+        <ParkDetail isLoading={isLoading} setIsLoading={setIsLoading} />
       </Route>
     </>
   );
