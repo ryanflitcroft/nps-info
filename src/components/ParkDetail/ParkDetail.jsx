@@ -23,13 +23,13 @@ export default function ParkDetail({ isLoading, setIsLoading }) {
         <h2>
           {park.parkName} - {park.parkCode}
         </h2>
-        <p>{park.description}</p>
-        <section>
+        <p aria-label={`Description of ${park.parkName}`}>{park.description}</p>
+        <section aria-label={`images of ${park.parkName}`}>
           {park.images?.map((image, i) => (
             <figure key={i}>
               <h3>{image.title}</h3>
               <img src={image.url} alt={image.altText} />
-              <figcaption>
+              <figcaption aria-label={`Describes ${image.title}`}>
                 {image.caption} - {image.credit}
               </figcaption>
             </figure>
