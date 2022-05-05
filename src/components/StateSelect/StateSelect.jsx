@@ -14,7 +14,7 @@ export default function StateSelect({ parkState, setParkState }) {
 
   return (
     <>
-      <form>
+      <form aria-label="select a state to search National Parks">
         <label htmlFor="selectState">Select state/territory:</label>
         <select name="selectState" value={parkState} onChange={handleChange}>
           {stateCodes.map((i) => (
