@@ -8,9 +8,6 @@ import { MemoryRouter } from 'react-router-dom';
 import Main from './Main';
 import userEvent from '@testing-library/user-event';
 import { mockData } from '../../fixtures/mockData';
-import { element } from 'prop-types';
-import { click } from '@testing-library/user-event/dist/click';
-import { wait } from '@testing-library/user-event/dist/utils';
 
 describe('render component Main', () => {
   it('should render elements main, form, label, select, option', async () => {
@@ -39,7 +36,7 @@ describe('render component Main', () => {
 
     userEvent.selectOptions(select, 'OR');
 
-    waitFor(() => {
+    await waitFor(() => {
       const loading = screen.getByText(/...loading/i);
       expect(loading.nodeName).toBe('P');
 

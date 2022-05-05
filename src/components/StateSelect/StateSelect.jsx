@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ParksList from '../ParksList/ParksList';
 import { Route, useHistory, useRouteMatch } from 'react-router-dom';
 import { stateCodes } from '../../fixtures/stateCodes';
 
-export default function StateSelect({ parkState, setParkState }) {
+export default function StateSelect() {
+  const [parkState, setParkState] = useState('');
   const { url, path } = useRouteMatch();
   const history = useHistory();
 

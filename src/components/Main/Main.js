@@ -4,14 +4,12 @@ import StateSelect from '../StateSelect/StateSelect';
 import './Main.css';
 
 export default function Main() {
-  const [parkState, setParkState] = useState('');
-
   return (
     <>
       <main>
         <Switch>
           <Route path="/">
-            <StateSelect parkState={parkState} setParkState={setParkState} />
+            <StateSelect />
           </Route>
         </Switch>
       </main>
